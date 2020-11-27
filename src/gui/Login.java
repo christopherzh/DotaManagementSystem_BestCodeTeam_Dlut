@@ -1,5 +1,5 @@
 /*
- * Created by JFormDesigner on Tue Nov 24 10:22:06 CST 2020
+ * Created by Agonsle on Tue Nov 24 10:22:06 CST 2020
  */
 
 package gui;
@@ -37,12 +37,33 @@ public class Login extends JFrame {
     public Login() {
         initComponents();
         setIdentifyComboBox();
+//        Start start = new Start();
+//        this.add(start);
 //        MPanel pan=new MPanel(this.getClass().getResource(
 //                "img\\1.png"));
 //        pan.setLayout(new GridBagLayout());
 //        this.getContentPane().add(pan,BorderLayout.CENTER);
 //        setBackGroundImg("img\\1.png");
+//        setBackGround();
         setVisible(true);
+    }
+    private void setBackGround(Container container){
+        Icon icon = new ImageIcon("img\\background.jpg");
+        JLabel bgLabel = new JLabel(icon);
+        bgLabel.setBounds(0,0,icon.getIconWidth(),icon.getIconHeight());
+        container.add(bgLabel);
+        JPanel j=(JPanel)this.getContentPane();
+        j.setOpaque(false);
+        bgLabel.setOpaque(false);
+    }
+    private void setBackGround(){
+        Icon icon = new ImageIcon("img\\background.jpg");
+        JLabel bgLabel = new JLabel(icon);
+        bgLabel.setBounds(0,0,icon.getIconWidth(),icon.getIconHeight());
+        this.getLayeredPane().add(bgLabel,Integer.MIN_VALUE);
+        JPanel j=(JPanel)this.getContentPane();
+        j.setOpaque(false);
+        bgLabel.setOpaque(false);
     }
     private void setBackGroundImg(String filePath){
         ImageIcon img =  new ImageIcon(filePath);
@@ -147,25 +168,31 @@ public class Login extends JFrame {
 
         //======== this ========
         setTitle("Dota Account Management System");
+        setIconImage(new ImageIcon(getClass().getResource("/icon/Login.png")).getImage());
         setResizable(false);
+        setForeground(SystemColor.windowText);
         var contentPane = getContentPane();
-
+//        setBackGround(contentPane);
         //---- titleLabel ----
         titleLabel.setText("Dota Account Management System");
         titleLabel.setFont(titleLabel.getFont().deriveFont(titleLabel.getFont().getSize() + 12f));
 
         //---- idLabel ----
         idLabel.setText("playerID:");
+        idLabel.setIcon(new ImageIcon(getClass().getResource("/icon/ID.png")));
 
         //---- passwordLabel ----
         passwordLabel.setText("password");
+        passwordLabel.setIcon(new ImageIcon(getClass().getResource("/icon/password .png")));
 
         //---- loginButton ----
         loginButton.setText("login");
+        loginButton.setIcon(new ImageIcon(getClass().getResource("/icon/login (1).png")));
         loginButton.addActionListener(e -> loginButtonActionPerformed(e));
 
         //---- identityLabel ----
         identityLabel.setText("Please choose your identity:");
+        identityLabel.setIcon(new ImageIcon(getClass().getResource("/icon/perm-identity.png")));
 
         //---- identifyComboBox ----
         identifyComboBox.addActionListener(e -> identifyComboBoxActionPerformed(e));
@@ -175,36 +202,38 @@ public class Login extends JFrame {
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(135, 135, 135)
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(identityLabel)
-                            .addGap(18, 18, 18)
-                            .addComponent(identifyComboBox, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addContainerGap(74, Short.MAX_VALUE)
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                             .addGroup(contentPaneLayout.createParallelGroup()
-                                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                                    .addComponent(idLabel)
-                                    .addGap(32, 32, 32))
-                                .addGroup(contentPaneLayout.createSequentialGroup()
-                                    .addComponent(passwordLabel)
-                                    .addGap(28, 28, 28)))
-                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                .addComponent(idTextField, GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                                .addComponent(passwordField, GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)))
-                        .addComponent(loginButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(167, Short.MAX_VALUE))
-                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(108, Short.MAX_VALUE)
-                    .addComponent(titleLabel, GroupLayout.PREFERRED_SIZE, 410, GroupLayout.PREFERRED_SIZE)
-                    .addGap(85, 85, 85))
+                                .addComponent(loginButton, GroupLayout.PREFERRED_SIZE, 325, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(contentPaneLayout.createSequentialGroup()
+                                        .addComponent(identityLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(identifyComboBox))
+                                    .addGroup(contentPaneLayout.createSequentialGroup()
+                                        .addGroup(contentPaneLayout.createParallelGroup()
+                                            .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                                                .addComponent(idLabel)
+                                                .addGap(32, 32, 32))
+                                            .addGroup(contentPaneLayout.createSequentialGroup()
+                                                .addComponent(passwordLabel)
+                                                .addGap(28, 28, 28)))
+                                        .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(idTextField)
+                                            .addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE)))))
+                            .addGap(100, 100, 100))
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                            .addComponent(titleLabel, GroupLayout.PREFERRED_SIZE, 410, GroupLayout.PREFERRED_SIZE)
+                            .addGap(54, 54, 54))))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(60, 60, 60)
+                    .addGap(75, 75, 75)
                     .addComponent(titleLabel, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
+                    .addGap(39, 39, 39)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(identityLabel)
                         .addComponent(identifyComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -216,9 +245,9 @@ public class Login extends JFrame {
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(passwordLabel)
                         .addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(42, 42, 42)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(loginButton)
-                    .addContainerGap(51, Short.MAX_VALUE))
+                    .addContainerGap(49, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());

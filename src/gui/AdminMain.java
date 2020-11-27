@@ -1,5 +1,5 @@
 /*
- * Created by JFormDesigner on Tue Nov 24 20:27:07 CST 2020
+ * Created by Agonsle on Tue Nov 24 20:27:07 CST 2020
  */
 
 package gui;
@@ -68,10 +68,13 @@ public class AdminMain extends JFrame {
         viewButton = new JButton();
 
         //======== this ========
+        setTitle("Admin");
+        setIconImage(new ImageIcon(getClass().getResource("/icon/admin.png")).getImage());
         var contentPane = getContentPane();
 
         //---- idLabel ----
         idLabel.setText("text");
+        idLabel.setIcon(new ImageIcon(getClass().getResource("/icon/admin (1).png")));
 
         //---- districtLabel ----
         districtLabel.setText("Please choose the district you want to view: ");
@@ -81,6 +84,7 @@ public class AdminMain extends JFrame {
 
         //---- viewButton ----
         viewButton.setText("view this district");
+        viewButton.setIcon(new ImageIcon(getClass().getResource("/icon/view.png")));
         viewButton.addActionListener(e -> viewButtonActionPerformed(e));
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);

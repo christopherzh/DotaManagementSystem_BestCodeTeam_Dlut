@@ -31,6 +31,15 @@ public class Account {
     private int totalMatches;// the total games
     private String tier;
     private int totalRank;
+    private int number; // The ranking of player accounts within the server
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
 
     public int getTotalRank() {
         return totalRank;
@@ -41,12 +50,17 @@ public class Account {
     }
 
     public String getTier() {
-        return tier;
+        if (this.totalRank<=100)
+            return "BRONZE";
+        else if (this.totalRank<=300)
+            return "SILVER";
+        else if (totalRank<=800)
+            return "GOLD";
+        else if (totalRank<=2000)
+            return "DIAMOND";
+        else return "KING";
     }
 
-    public void setTier(String tier) {
-        this.tier = tier;
-    }
 
     public Account(){}
     public double winRate(){
@@ -123,7 +137,7 @@ public class Account {
     }
 
     public int getLevel() {
-        return level;
+        return totalMatches/20;
     }
 
     public void setLevel(int level) {
@@ -162,13 +176,7 @@ public class Account {
         this.victories = victories;
     }
 
-    public double getEscapeRate() {
-        return escapeRate;
-    }
 
-    public void setEscapeRate(double escapeRate) {
-        this.escapeRate = escapeRate;
-    }
 
     public int getMvp() {
         return mvp;
@@ -240,8 +248,38 @@ public class Account {
     @Override
     public String toString() {
 //        MapUtil mapUtil = new MapUtil();
-        return Server.values()[server].getServerName() + "/"
+        return Server.values()[server-1].getServerName() + "/"
                 + this.nickname +"/ "
-                + "Lv."+this.level;
+                + "Lv."+this.getLevel();
     }
+
+//    @Override
+//    public String toString() {
+//        return "Account{" +
+//                "totalTime=" + totalTime +
+//                ", nickname='" + nickname + '\'' +
+//                ", server=" + server +
+//                ", level=" + level +
+//                ", score=" + score +
+//                ", imgPath='" + imgPath + '\'' +
+//                ", accountId=" + accountId +
+//                ", victories=" + victories +
+//                ", escapeRate=" + escapeRate +
+//                ", mvp=" + mvp +
+//                ", tripleKill=" + tripleKill +
+//                ", quadraKill=" + quadraKill +
+//                ", rampage=" + rampage +
+//                ", kill=" + kill +
+//                ", assist=" + assist +
+//                ", death=" + death +
+//                ", compliment=" + compliment +
+//                ", heroes=" + heroes +
+//                ", matches=" + matches +
+//                ", escape=" + escape +
+//                ", playerId='" + playerId + '\'' +
+//                ", totalMatches=" + totalMatches +
+//                ", tier='" + tier + '\'' +
+//                ", totalRank=" + totalRank +
+//                '}';
+//    }
 }

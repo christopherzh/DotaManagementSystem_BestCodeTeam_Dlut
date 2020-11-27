@@ -147,4 +147,25 @@ public class OneMatch {
     public void setRank(int rank) {
         this.rank = rank;
     }
+
+    @Override
+    public String toString() {
+        return "OneMatch{" +
+                "hero='" + hero + '\'' +
+                ", result=" + result +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", heroPoint=" + heroPoint +
+                ", kill=" + kill +
+                ", death=" + death +
+                ", assist=" + assist +
+                ", rank=" + rank +
+                ", mvp=" + mvp +
+                ", tripleKill=" + tripleKill +
+                ", quadraKill=" + quadraKill +
+                ", rampage=" + rampage +
+                ", compliment=" + compliment +
+                ", escape=" + escape +
+                '}';
+    }
 }

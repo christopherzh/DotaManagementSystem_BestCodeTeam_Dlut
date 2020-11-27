@@ -1,5 +1,5 @@
 /*
- * Created by JFormDesigner on Thu Nov 26 09:43:10 CST 2020
+ * Created by LZR on Thu Nov 26 09:43:10 CST 2020
  */
 
 package gui;
@@ -13,12 +13,13 @@ import javax.swing.*;
 import javax.swing.GroupLayout;
 
 /**
- * @author Agonsle
+ * @author LZR
  */
 public class InsertRecord extends JFrame {
     public InsertRecord(int server, int accountId) {
         this.server = server;
         this.accountId = accountId;
+        System.out.println(accountId);
         initComponents();
     }
     private void insert(){
@@ -164,13 +165,17 @@ public class InsertRecord extends JFrame {
 
         //======== this ========
         setResizable(false);
+        setTitle("Add Game Record");
+        setIconImage(new ImageIcon(getClass().getResource("/icon/game.png")).getImage());
         var contentPane = getContentPane();
 
         //---- label1 ----
         label1.setText("hero");
+        label1.setIcon(new ImageIcon(getClass().getResource("/icon/23-superhero.png")));
 
         //---- resultLabel ----
         resultLabel.setText("result");
+        resultLabel.setIcon(new ImageIcon(getClass().getResource("/icon/result.png")));
 
         //---- resultComboBox ----
         resultComboBox.setModel(new DefaultComboBoxModel<>(new String[] {
@@ -180,39 +185,51 @@ public class InsertRecord extends JFrame {
 
         //---- startTimeLabel ----
         startTimeLabel.setText("start time");
+        startTimeLabel.setIcon(new ImageIcon(getClass().getResource("/icon/start-time.png")));
 
         //---- endTimeLabel ----
         endTimeLabel.setText("end time");
+        endTimeLabel.setIcon(new ImageIcon(getClass().getResource("/icon/start-time (1).png")));
 
         //---- heroPointLabel ----
         heroPointLabel.setText("hero point");
+        heroPointLabel.setIcon(new ImageIcon(getClass().getResource("/icon/score.png")));
 
         //---- killLabel ----
         killLabel.setText("kill");
+        killLabel.setIcon(new ImageIcon(getClass().getResource("/icon/AttackOutline.png")));
 
         //---- deathLabel ----
         deathLabel.setText("death");
+        deathLabel.setIcon(new ImageIcon(getClass().getResource("/icon/185091 - danger death delete destroy skull streamline.png")));
 
         //---- assistLabel ----
         assistLabel.setText("assist");
+        assistLabel.setIcon(new ImageIcon(getClass().getResource("/icon/assistant_photo.png")));
 
         //---- rankLabel ----
         rankLabel.setText("rank");
+        rankLabel.setIcon(new ImageIcon(getClass().getResource("/icon/ranking list-fill.png")));
 
         //---- tripleKillLabel ----
         tripleKillLabel.setText("triple kill");
+        tripleKillLabel.setIcon(new ImageIcon(getClass().getResource("/icon/three_fill.png")));
 
         //---- quadraKillLabel ----
         quadraKillLabel.setText("quadra kill");
+        quadraKillLabel.setIcon(new ImageIcon(getClass().getResource("/icon/four_fill.png")));
 
         //---- rampageLabel ----
         rampageLabel.setText("rampage");
+        rampageLabel.setIcon(new ImageIcon(getClass().getResource("/icon/five_fill.png")));
 
         //---- complimentLabel ----
         complimentLabel.setText("compliment");
+        complimentLabel.setIcon(new ImageIcon(getClass().getResource("/icon/good.png")));
 
         //---- mvpLabel ----
         mvpLabel.setText("mvp");
+        mvpLabel.setIcon(new ImageIcon(getClass().getResource("/icon/king.png")));
 
         //---- mvpComboBox ----
         mvpComboBox.setModel(new DefaultComboBoxModel<>(new String[] {
@@ -222,6 +239,7 @@ public class InsertRecord extends JFrame {
 
         //---- escapeLabel ----
         escapeLabel.setText("escape");
+        escapeLabel.setIcon(new ImageIcon(getClass().getResource("/icon/run.png")));
 
         //---- escapeComboBox ----
         escapeComboBox.setModel(new DefaultComboBoxModel<>(new String[] {
@@ -231,6 +249,7 @@ public class InsertRecord extends JFrame {
 
         //---- insertButton ----
         insertButton.setText("insert");
+        insertButton.setIcon(new ImageIcon(getClass().getResource("/icon/insert.png")));
         insertButton.addActionListener(e -> insertButtonActionPerformed(e));
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
@@ -241,54 +260,47 @@ public class InsertRecord extends JFrame {
                     .addGap(83, 83, 83)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                         .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(label1)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(heroTextField, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(insertButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(contentPaneLayout.createSequentialGroup()
                             .addGroup(contentPaneLayout.createParallelGroup()
-                                .addComponent(endTimeLabel)
+                                .addComponent(quadraKillLabel)
+                                .addComponent(rampageLabel)
+                                .addComponent(complimentLabel)
+                                .addComponent(escapeLabel)
+                                .addComponent(resultLabel)
+                                .addComponent(mvpLabel))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(contentPaneLayout.createParallelGroup()
+                                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tripleKillTextField)
+                                    .addComponent(rankTextField)
+                                    .addComponent(assistTextField)
+                                    .addComponent(deathTextField)
+                                    .addComponent(killTextField)
+                                    .addComponent(heroPointTextField)
+                                    .addComponent(quadraKillTextField, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rampageTextField, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(complimentTextField, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(endTimeTextField, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(mvpComboBox, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(resultComboBox, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(escapeComboBox, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(GroupLayout.Alignment.LEADING, contentPaneLayout.createSequentialGroup()
+                            .addGroup(contentPaneLayout.createParallelGroup()
                                 .addComponent(startTimeLabel)
+                                .addComponent(endTimeLabel)
                                 .addComponent(heroPointLabel)
                                 .addComponent(killLabel)
                                 .addComponent(deathLabel)
                                 .addComponent(assistLabel)
                                 .addComponent(rankLabel)
                                 .addComponent(tripleKillLabel))
-                            .addGroup(contentPaneLayout.createParallelGroup()
-                                .addGroup(contentPaneLayout.createSequentialGroup()
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(contentPaneLayout.createParallelGroup()
-                                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tripleKillTextField, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                            .addComponent(rankTextField, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                            .addComponent(assistTextField, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                            .addComponent(deathTextField, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                            .addComponent(killTextField, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                            .addComponent(heroPointTextField, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
-                                        .addComponent(endTimeTextField, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(contentPaneLayout.createSequentialGroup()
-                                    .addGap(71, 71, 71)
-                                    .addComponent(startTimeTextField, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGroup(contentPaneLayout.createParallelGroup()
-                                .addComponent(quadraKillLabel)
-                                .addComponent(rampageLabel)
-                                .addComponent(complimentLabel)
-                                .addComponent(mvpLabel))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                .addComponent(mvpComboBox, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                .addComponent(complimentTextField, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                .addComponent(rampageTextField, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                .addComponent(quadraKillTextField, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGroup(contentPaneLayout.createParallelGroup()
-                                .addComponent(label1)
-                                .addComponent(resultLabel)
-                                .addComponent(escapeLabel))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                .addComponent(heroTextField, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                .addComponent(resultComboBox, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                .addComponent(escapeComboBox, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)))
-                        .addComponent(insertButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(71, 71, 71)
+                            .addComponent(startTimeTextField, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE)))
                     .addGap(78, 78, 78))
         );
         contentPaneLayout.setVerticalGroup(
@@ -302,6 +314,28 @@ public class InsertRecord extends JFrame {
                         .addComponent(heroTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(contentPaneLayout.createParallelGroup()
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(startTimeLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(endTimeLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(heroPointLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(killLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(deathLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(assistLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(rankLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tripleKillLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(quadraKillLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(rampageLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(complimentLabel))
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addComponent(startTimeTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
@@ -317,52 +351,26 @@ public class InsertRecord extends JFrame {
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(rankTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(tripleKillTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(startTimeLabel)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(endTimeLabel)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(heroPointLabel)
+                            .addComponent(tripleKillTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(killLabel)
+                            .addComponent(quadraKillTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(deathLabel)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(assistLabel)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(rankLabel)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tripleKillLabel)))
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(quadraKillLabel)
-                        .addComponent(quadraKillTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(rampageLabel)
-                        .addComponent(rampageTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(complimentLabel)
-                        .addComponent(complimentTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(mvpLabel)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(rampageTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(mvpComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(resultLabel)
-                        .addComponent(resultComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(escapeLabel)
-                        .addComponent(escapeComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(9, 9, 9))
+                            .addComponent(complimentTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(mvpComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(mvpLabel))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(resultComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(resultLabel))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(escapeComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(escapeLabel))))
+                    .addContainerGap(50, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());

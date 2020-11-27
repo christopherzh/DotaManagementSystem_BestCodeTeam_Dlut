@@ -1,5 +1,5 @@
 /*
- * Created by JFormDesigner on Tue Nov 24 13:57:19 CST 2020
+ * Created by LZR on Tue Nov 24 13:57:19 CST 2020
  */
 
 package gui;
@@ -11,9 +11,10 @@ import util.Account;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import java.awt.*;
+import java.util.LinkedList;
 
 /**
- * @author Agonsle
+ * @author LZR
  */
 public class PlayerMain extends JFrame {
     public PlayerMain(Player player) {
@@ -37,7 +38,10 @@ public class PlayerMain extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new PlayerMain(new Player("1234","1234")).setVisible(true);
+                Account account = new Account();
+                java.util. List<Account> accounts = new LinkedList<>();
+                Player player = new Player("1234","1234");
+                new PlayerMain(player).setVisible(true);
             }
         });
     }
@@ -82,20 +86,20 @@ public class PlayerMain extends JFrame {
         button2 = new JButton();
 
         //======== this ========
+        setTitle("Player");
+        setIconImage(new ImageIcon(getClass().getResource("/icon/computer game.png")).getImage());
         var contentPane = getContentPane();
 
         //======== imgPanel ========
         {
-            imgPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
-            .swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing
-            .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
-            Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
-            ),imgPanel. getBorder()));imgPanel. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
-            public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName(
-            )))throw new RuntimeException();}});
-
-            //---- imgLabel ----
-            imgLabel.setText("img");
+            imgPanel.setPreferredSize(new Dimension(150, 150));
+            imgPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
+            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "" , javax. swing
+            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
+            Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
+            ) ,imgPanel. getBorder () ) ); imgPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
+            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName (
+            ) ) )throw new RuntimeException( ) ;} } );
 
             GroupLayout imgPanelLayout = new GroupLayout(imgPanel);
             imgPanel.setLayout(imgPanelLayout);
@@ -104,12 +108,12 @@ public class PlayerMain extends JFrame {
                     .addGroup(imgPanelLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(imgLabel)
-                        .addContainerGap(39, Short.MAX_VALUE))
+                        .addContainerGap(112, Short.MAX_VALUE))
             );
             imgPanelLayout.setVerticalGroup(
                 imgPanelLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, imgPanelLayout.createSequentialGroup()
-                        .addContainerGap(43, Short.MAX_VALUE)
+                        .addContainerGap(111, Short.MAX_VALUE)
                         .addComponent(imgLabel)
                         .addGap(39, 39, 39))
             );
@@ -123,10 +127,12 @@ public class PlayerMain extends JFrame {
 
         //---- button1 ----
         button1.setText("select this account");
+        button1.setIcon(new ImageIcon(getClass().getResource("/icon/select.png")));
         button1.addActionListener(e -> button1ActionPerformed(e));
 
         //---- button2 ----
         button2.setText("exit");
+        button2.setIcon(new ImageIcon(getClass().getResource("/icon/exit.png")));
         button2.addActionListener(e -> button2ActionPerformed(e));
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
@@ -135,9 +141,6 @@ public class PlayerMain extends JFrame {
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
                     .addGroup(contentPaneLayout.createParallelGroup()
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(241, 241, 241)
-                            .addComponent(imgPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addGap(74, 74, 74)
                             .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
@@ -148,15 +151,18 @@ public class PlayerMain extends JFrame {
                                 .addGroup(contentPaneLayout.createSequentialGroup()
                                     .addComponent(chooseAccountLabel)
                                     .addGap(18, 18, 18)
-                                    .addComponent(chooseAccountComboBox, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(chooseAccountComboBox, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGap(211, 211, 211)
+                            .addComponent(imgPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(87, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(46, 46, 46)
+                    .addGap(52, 52, 52)
                     .addComponent(imgPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(chooseAccountLabel)
                         .addComponent(chooseAccountComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -164,7 +170,7 @@ public class PlayerMain extends JFrame {
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(button1)
                         .addComponent(button2))
-                    .addContainerGap(96, Short.MAX_VALUE))
+                    .addContainerGap(46, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());

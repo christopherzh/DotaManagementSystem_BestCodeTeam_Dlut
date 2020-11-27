@@ -1,9 +1,10 @@
 /*
- * Created by JFormDesigner on Wed Nov 25 09:38:17 CST 2020
+ * Created by LZR on Wed Nov 25 09:38:17 CST 2020
  */
 
 package gui;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.table.*;
 
@@ -17,7 +18,7 @@ import javax.swing.GroupLayout;
 import java.util.*;
 
 /**
- * @author Agonsle
+ * @author LZR
  */
 public class AccountsInServer extends JFrame {
     public AccountsInServer(HashMap<Integer,String> map,int server) {
@@ -26,6 +27,15 @@ public class AccountsInServer extends JFrame {
         initComponents();
         init();
 
+    }
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
     }
     private void init(){
         setInfoTable();
@@ -53,6 +63,7 @@ public class AccountsInServer extends JFrame {
         if (selectedItem == -1) return;
         selectedAccountId = (int )infoTable.getValueAt(selectedItem,0);
         selectedPlayerId = (String )infoTable.getValueAt(selectedItem,1);
+        System.out.println(selectedAccountId +" " + selectedPlayerId);
     }
 
     private void editButtonActionPerformed(ActionEvent e) {
@@ -109,6 +120,11 @@ public class AccountsInServer extends JFrame {
         setTable(searchText);
     }
 
+    private void button1ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        new InsertRecord(server,selectedAccountId).setVisible(true);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Agonsle
@@ -121,6 +137,8 @@ public class AccountsInServer extends JFrame {
 
         //======== this ========
         setResizable(false);
+        setTitle("Server Introduction");
+        setIconImage(new ImageIcon(getClass().getResource("/icon/server.png")).getImage());
         var contentPane = getContentPane();
 
         //======== scrollPane1 ========
@@ -147,30 +165,34 @@ public class AccountsInServer extends JFrame {
 
         //---- editButton ----
         editButton.setText("delete this account");
+        editButton.setIcon(new ImageIcon(getClass().getResource("/icon/delete.png")));
         editButton.addActionListener(e -> editButtonActionPerformed(e));
 
         //---- searchButton ----
         searchButton.setText("search");
+        searchButton.setIcon(new ImageIcon(getClass().getResource("/icon/Search.png")));
         searchButton.addActionListener(e -> searchButtonActionPerformed(e));
 
         //---- button1 ----
         button1.setText("insert new record into this account");
+        button1.setIcon(new ImageIcon(getClass().getResource("/icon/Search.png")));
+        button1.addActionListener(e -> button1ActionPerformed(e));
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(36, Short.MAX_VALUE)
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 371, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(73, Short.MAX_VALUE)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(editButton, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(searchTextField, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(searchButton))
-                        .addComponent(button1, GroupLayout.PREFERRED_SIZE, 371, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(editButton)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(searchTextField, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                        .addComponent(button1, GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE))
                     .addGap(46, 46, 46))
         );
         contentPaneLayout.setVerticalGroup(
@@ -185,7 +207,7 @@ public class AccountsInServer extends JFrame {
                     .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(button1)
-                    .addContainerGap(16, Short.MAX_VALUE))
+                    .addContainerGap(39, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());

@@ -24,13 +24,13 @@ public class AccountSql extends Sql {
                 match.setStartTime(StringUtil.getTimeFromSql(resultSet.getString("start_time")));
                 match.setEndTime(StringUtil.getTimeFromSql(resultSet.getString("end_time")));
                 match.setHeroPoint(resultSet.getDouble("hero_point"));
-                match.setKill(resultSet.getInt("kill"));
+                match.setKill(resultSet.getInt("kills"));
                 match.setDeath(resultSet.getInt("death"));
                 match.setAssist(resultSet.getInt("assist"));
-                match.setRank(resultSet.getInt("rank"));
+                match.setRank(resultSet.getInt("rank_game"));
                 rtnList.add(match);
             }
-            closeConnection();
+//            closeConnection();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -43,23 +43,28 @@ public class AccountSql extends Sql {
         List<Hero> rtnList = new LinkedList<>();
         String selectSql= "select * from server_"+server +"_account_"+accountId+"_hero";
         if (!StringUtil.isEmpty(heroName))
-            selectSql += (" where hero_name = "+heroName);
+            selectSql += (" where hero_name = "+"'" + heroName + "'");
             try{
-            PreparedStatement preparedStatement = connection.prepareStatement(selectSql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
-                Hero hero = new Hero();
-                hero.setHeroName(resultSet.getString("hero_name"));
-                hero.setVictory(resultSet.getInt("victory"));
-                hero.setTotalGames(resultSet.getInt("total_game"));
-                hero.setKill(resultSet.getInt("kill"));
-                hero.setDeath(resultSet.getInt("death"));
-                hero.setAssist(resultSet.getInt("assist"));
-                hero.setTotalHeroPoints(resultSet.getInt("total_hero_point"));
-                hero.setHeroRank( resultSet.getInt("hero_rank"));
-                rtnList.add(hero);
+                PreparedStatement preparedStatement = connection.prepareStatement(selectSql);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()){
+                    Hero hero = new Hero();
+                    hero.setHeroName(resultSet.getString("hero_name"));
+                    hero.setVictory(resultSet.getInt("victory"));
+                    hero.setTotalGames(resultSet.getInt("total_game"));
+                    hero.setKill(resultSet.getInt("kills"));
+                    hero.setDeath(resultSet.getInt("death"));
+                    hero.setAssist(resultSet.getInt("assist"));
+                    hero.setTotalHeroPoints(resultSet.getInt("total_hero_point"));
+                    hero.setHeroRank( resultSet.getInt("hero_rank"));
+                    hero.setMvp(resultSet.getInt("mvp"));
+                    hero.setTripleKill(resultSet.getInt("triple_kill"));
+                    hero.setQuadraKill(resultSet.getInt("quadra_kill"));
+                    hero.setRampage(resultSet.getInt("compliment"));
+                    hero.setEscape(resultSet.getInt("escape_game"));
+                    rtnList.add(hero);
             }
-            closeConnection();
+//            closeConnection();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -71,13 +76,26 @@ public class AccountSql extends Sql {
         // need to update server_num_account_num_hero
         // need to update server_num
         String insertSql = "insert into server_"+server +"_account_"+ accountId +"_" +
-                "match(hero,start_time,end_time,hero_point,kill,death,assist,rank,triple_kill,quadra_kill,rampage,compliment,result,mvp,escaped)" +
+                "match(hero,start_time,end_time,hero_point,kills,death,assist,rank_game,triple_kill,quadra_kill,rampage,compliment,result,mvp,escape_game)" +
                 " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        String selectSql1 = "";
+//        System.out.println(insertSql);
+        String selectSql1 = "insert into server_1_account_2_match (start_time,end_time,hero) values(?,?,?)";
         String updateSql1  = "";
-        String selectSql2 = "";
-        String updateSql2  = "";
+//        String insertSq2 = "insert into server_"+server +"_account_"+ accountId +"_" +
+//                "match(hero,start_time,end_time,hero_point)" +
+//                " values(?,?,?,?)";
+//        String updateSql2  = "";
         try{
+//            boolean flag = true;
+//            PreparedStatement preparedStatement6 = connection.prepareStatement(selectSql1);
+//            preparedStatement6.setString(1,"00:00:00");
+//            preparedStatement6.setString(2,"00:01:34");
+//            preparedStatement6.setString(3,"luozi");
+//            preparedStatement6.execute();
+//            if (flag)
+//                return true;
+//            PreparedStatement  preparedStatement = connection.prepareStatement(insertSq2);
+
             PreparedStatement  preparedStatement = connection.prepareStatement(insertSql);
             preparedStatement.setString(1,match.getHero());
             preparedStatement.setString(2,match.getStartTime().toString());
@@ -94,28 +112,36 @@ public class AccountSql extends Sql {
             preparedStatement.setBoolean(13,match.getResult());
             preparedStatement.setBoolean(14,match.getMvp());
             preparedStatement.setBoolean(15,match.getEscape());
-            if (preparedStatement.executeUpdate()<=0){
-                closeConnection();
-                return false;
-            }
+            preparedStatement.execute();
+//            if (flag)
+//                return true;
+
+
 
             List<Hero> heroList =  getHeroesOfThisAccount(server,accountId,match.getHero());
-            if (heroList.size() ==0){
+            if (heroList == null || heroList.size() ==0){
                 // have no this record
                 String insertHero = "insert into server_"+server +"_account_"+ accountId +"_" +
-                        "hero(hero_name,victory,total_game,kill,death,assist,total_hero_point,hero_rank) "+
-                        "values(?,?,?,?,?,?,?,?)";
+                        "hero(hero_name,victory,total_game,kills,death,assist,total_hero_point,hero_rank,mvp,triple_kill," +
+                        "quadra_kill,rampage,compliment,escape_game) "+
+                        "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 PreparedStatement preparedStatement1 = connection.prepareStatement(insertHero);
                 preparedStatement1.setString(1,match.getHero());
                 preparedStatement1.setInt(2,match.getResult()?1:0);
-                preparedStatement1.setInt(3,1);
+                preparedStatement1.setString(3,"1");
                 preparedStatement1.setInt(4,match.getKill());
                 preparedStatement1.setInt(5,match.getDeath());
                 preparedStatement1.setInt(6,match.getAssist());
                 preparedStatement1.setDouble(7,match.getHeroPoint());
                 preparedStatement1.setInt(8,match.getRank());
+                preparedStatement1.setInt(9,match.getMvp()?1:0);
+                preparedStatement1.setInt(10,match.getTripleKill());
+                preparedStatement1.setInt(11,match.getQuadraKill());
+                preparedStatement1.setInt(12,match.getRampage());
+                preparedStatement1.setInt(13,match.getCompliment());
+                preparedStatement1.setInt(14,match.getEscape()?0:1);
                 if (preparedStatement1.executeUpdate()<=0){
-                    closeConnection();
+//                    closeConnection();
                     return false;
                 }
 
@@ -124,7 +150,7 @@ public class AccountSql extends Sql {
                 // have this record
                 Hero hero = heroList.get(0);
                 String updateHero = "update server_"+server +"_account_"+ accountId +"_hero set "+
-                        "victory=?,total_game=?,kill=?,death=?,assist=?,total_hero_point=?,hero_rank=? "+
+                        "victory=?,total_game=?,kills=?,death=?,assist=?,total_hero_point=?,hero_rank=? "+
                         "where hero_name = "+ match.getHero();
                 PreparedStatement preparedStatement2 = connection.prepareStatement(updateHero);
                 preparedStatement2.setString(8,match.getHero());
@@ -136,7 +162,7 @@ public class AccountSql extends Sql {
                 preparedStatement2.setDouble(6,hero.getTotalHeroPoints()+match.getHeroPoint());
                 preparedStatement2.setInt(7,hero.getHeroRank() +match.getRank());
                 if (preparedStatement2.executeUpdate()<=0){
-                    closeConnection();
+//                    closeConnection();
                     return false;
                 }
             }
@@ -155,29 +181,31 @@ public class AccountSql extends Sql {
 //                    List<String> t = StringUtil.seperateString(timeStr,':');
 //                    account.setTotalTime(new Time(Integer.parseInt(t.get(0)),Integer.parseInt(t.get(1)),Integer.parseInt(t.get(2))));
                 account.setTotalTime(StringUtil.getTimeFromSql(timeStr));
-                account.setLevel(resultSet1.getInt("level"));
-                account.setScore(resultSet1.getInt("score"));
+//                account.setLevel(resultSet1.getInt("level"));
+//                account.setScore(resultSet1.getInt("score"));
                 account.setImgPath(resultSet1.getString("img_path"));
                 account.setNickname(resultSet1.getString("nickname"));
                 account.setVictories(resultSet1.getInt("victory"));
-                account.setTotalMatches(resultSet1.getInt("total_match"));
-                account.setEscape(resultSet1.getInt("escaped"));// it seems that escape is a key word in mysql
+                account.setTotalMatches(resultSet1.getInt("total_game"));
+                account.setEscape(resultSet1.getInt("escape_game"));// it seems that escape is a key word in mysql
                 account.setMvp(resultSet1.getInt("mvp"));
                 account.setRampage(resultSet1.getInt("rampage"));
                 account.setCompliment(resultSet1.getInt("compliment"));
-                account.setKill(resultSet1.getInt("kill"));
+                account.setKill(resultSet1.getInt("kills"));
                 account.setAssist(resultSet1.getInt("assist"));
                 account.setDeath(resultSet1.getInt("death"));
             }
-            String updateServerNUM = "update server_"+server +" set victory =?, total_match =?, time=?" +
-                    "kill=?,death=?,assist=?,rank =?, mvp=?,triple_kill=?,quadra_kill=?,rampage=?," +
-                    "compliment =?, escaped =?        where accountId = "+ accountId;
+            String updateServerNUM = "update server_"+server +" set victory =?, total_game =?, time=?," +
+                    "kills=?,death=?,assist=?,rank_game =?, mvp=?,triple_kill=?,quadra_kill=?,rampage=?," +
+                    "compliment =?, escape_game =?        where account_id = "+ accountId;
             PreparedStatement preparedStatement4 = connection.prepareStatement(updateServerNUM);
             preparedStatement4.setInt(1,account.getVictories()+ (match.getResult()?1:0));
             preparedStatement4.setInt(2,account.getTotalMatches()+1);
             Time time = match.getStartTime().deltaTime(match.getEndTime());
-            account.getTotalTime().addTime(time);
-            preparedStatement4.setString(3,account.getTotalTime().toString());
+//            System.out.println(time);
+            Time newTime = time.addTime(account.getTotalTime());
+//            System.out.println(newTime);
+            preparedStatement4.setString(3,time.toString());
             preparedStatement4.setInt(4,account.getKill() + match.getKill());
             preparedStatement4.setInt(5,account.getDeath() + match.getDeath());
             preparedStatement4.setInt(6,account.getAssist() + match.getAssist());
@@ -189,13 +217,13 @@ public class AccountSql extends Sql {
             preparedStatement4.setInt(12,account.getCompliment()+ match.getCompliment());
             preparedStatement4.setInt(13,account.getEscape() + (match.getEscape()?0:1));
             if (preparedStatement4.executeUpdate()<=0){
-                closeConnection();
+//                closeConnection();
                 return false;
             }
 
 
 
-            closeConnection();
+//            closeConnection();
         }catch (Exception e){
             e.printStackTrace();
         }

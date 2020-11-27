@@ -18,12 +18,19 @@ public class Time {
         minute = (minute+carrySec)%60;
         hour += carryMin;
     }
-    public void addTime(Time time){
-        this.hour += time.hour;
-        this.minute += time.minute;
-        this.second += time.second;
-        adjustTime();
+    public Time addTime(Time time){
+        if (time == null ) return this;
+        int h = this.hour + time.hour;
+        int m = this.minute + time.minute;
+        int s = this.second +time.second;
+        return new Time(h,m,s);
     }
+//    public Time addTime(Time time){
+//        int h = this.hour + time.hour;
+//        int m = this.minute + time.minute;
+//        int s = this.second +time.second;
+//        return new
+//    }
     public Time  deltaTime(Time endTime){
         // this is the start time
         int sec = endTime.second-second;

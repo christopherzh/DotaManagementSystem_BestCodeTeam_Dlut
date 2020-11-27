@@ -136,4 +136,24 @@ public class Hero {
     public String K_D_A() {
         return kill+"/"+death+"/"+assist;
     }
+
+    @Override
+    public String toString() {
+        return "Hero{" +
+                "HeroName='" + HeroName + '\'' +
+                ", victory=" + victory +
+                ", totalGames=" + totalGames +
+                ", kill=" + kill +
+                ", death=" + death +
+                ", assist=" + assist +
+                ", totalHeroPoints=" + totalHeroPoints +
+                ", heroRank=" + heroRank +
+                ", mvp=" + mvp +
+                ", tripleKill=" + tripleKill +
+                ", quadraKill=" + quadraKill +
+                ", rampage=" + rampage +
+                ", compliment=" + compliment +
+                ", escape=" + escape +
+                '}';
+    }
 }

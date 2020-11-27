@@ -24,7 +24,7 @@ public class AdminSql extends Sql {
             if (resultSet.next()){
                 admin = new Admin(id,password);
             }
-            closeConnection();
+//            closeConnection();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -36,16 +36,19 @@ public class AdminSql extends Sql {
 //        // search table server_num and return a list of Account
         // return List<HashMap<Integer,String>>
         HashMap<Integer,String> rtnMap= new HashMap<>();
-        String selectSql = "select account_id and player_id from server_"+server; // select all the records in the database
+//        String selectSql = "select account_id and player_id from server_"+server; // select all the records in the database
+//        System.out.println(selectSql);
+        String selectSql = "select * from server_"+server  + " order by rank_game DESC"; // select all the records in the database
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(selectSql);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 int accountId= resultSet.getInt("account_id");
+//                System.out.println(accountId);
                 String playerId = resultSet.getString("player_id");
                 rtnMap.put(accountId,playerId);
             }
-            closeConnection();
+//            closeConnection();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -65,7 +68,7 @@ public class AdminSql extends Sql {
             while(resultSet.next()){
                 rtnMap.put(resultSet.getInt("account_id"),resultSet.getString("player_id"));
             }
-            closeConnection();
+//            closeConnection();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -101,27 +104,27 @@ public class AdminSql extends Sql {
             preparedStatement1.setString(1,newServerAndAccount);
             int updateResult = preparedStatement1.executeUpdate();
             if (updateResult <=0) {
-                closeConnection();
+//                closeConnection();
                 return false;
             }
             PreparedStatement preparedStatement2 = connection.prepareStatement(updateSql2);
             preparedStatement2.setInt(1,accountId);
             if (preparedStatement.executeUpdate()<=0){
-                closeConnection();
+//                closeConnection();
                 return false;
             }
             PreparedStatement preparedStatement3 = connection.prepareStatement(deleteSql1);
             if (!preparedStatement3.execute()){
-                closeConnection();
+//                closeConnection();
                 return false;
             }
             PreparedStatement preparedStatement4 = connection.prepareStatement(deleteSql2);
             if (!preparedStatement4.execute()){
-                closeConnection();
+//                closeConnection();
                 return false;
             }
 
-            closeConnection();
+//            closeConnection();
         }catch (Exception e){
             e.printStackTrace();
         }

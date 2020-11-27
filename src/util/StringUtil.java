@@ -52,6 +52,7 @@ public class StringUtil {
         return list;
     }
     public static Time getTimeFromSql(String time){
+        if (isEmpty(time )) return null;
         // Time is stored as string
         List<String> t = seperateString(time,':');
         return new Time(Integer.parseInt(t.get(0)),Integer.parseInt(t.get(1)),Integer.parseInt(t.get(2)));

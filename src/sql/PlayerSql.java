@@ -29,11 +29,11 @@ public class PlayerSql extends Sql {
                 serverAndAccount = resultSet.getString("server_and_account");
             if (StringUtil.isEmpty(serverAndAccount)) {
                 // have no this player or the id and the password mismatched
-                closeConnection();
+//                closeConnection();
                 return null;
             }
             accountList = getAccountList(serverAndAccount);
-            closeConnection();
+//            closeConnection();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -49,13 +49,15 @@ public class PlayerSql extends Sql {
             List<String> p = StringUtil.seperateString(pair,':');
             int server = Integer.parseInt(p.get(0));
             int accountId = Integer.parseInt(p.get(1));
-            String selectSql = "select * from server_" + server +" where account_id = ?";
+            String selectSql = "select * from server_" + server +" where account_id = ? order by rank_game DESC";
+            int cnt = 1;// the counter of the Number
             Account account = new Account();
             try{
                 PreparedStatement preparedStatement = connection.prepareStatement(selectSql);
                 preparedStatement.setInt(1,accountId);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()){
+                    account.setNumber(cnt++);
                     account.setAccountId(accountId);
                     account.setServer(server);
                     account.setPlayerId(resultSet.getString("player_id"));
@@ -64,17 +66,17 @@ public class PlayerSql extends Sql {
 //                    List<String> t = StringUtil.seperateString(timeStr,':');
 //                    account.setTotalTime(new Time(Integer.parseInt(t.get(0)),Integer.parseInt(t.get(1)),Integer.parseInt(t.get(2))));
                     account.setTotalTime(StringUtil.getTimeFromSql(timeStr));
-                    account.setLevel(resultSet.getInt("level"));
-                    account.setScore(resultSet.getInt("score"));
+//                    account.setLevel(resultSet.getInt("level"));
+                    account.setScore(resultSet.getInt("rank_game"));
                     account.setImgPath(resultSet.getString("img_path"));
                     account.setNickname(resultSet.getString("nickname"));
                     account.setVictories(resultSet.getInt("victory"));
-                    account.setTotalMatches(resultSet.getInt("total_match"));
-                    account.setEscape(resultSet.getInt("escaped"));// it seems that escape is a key word in mysql
+                    account.setTotalMatches(resultSet.getInt("total_game"));
+                    account.setEscape(resultSet.getInt("escape_game"));// it seems that escape is a key word in mysql
                     account.setMvp(resultSet.getInt("mvp"));
                     account.setRampage(resultSet.getInt("rampage"));
                     account.setCompliment(resultSet.getInt("compliment"));
-                    account.setKill(resultSet.getInt("kill"));
+                    account.setKill(resultSet.getInt("kills"));
                     account.setAssist(resultSet.getInt("assist"));
                     account.setDeath(resultSet.getInt("death"));
                     // matches and heroes left, we put it in AccountSql
