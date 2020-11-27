@@ -1,0 +1,33 @@
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:44:p, par t:::p {comp viewButton::l:::x, comp districtComboBox::l:::x, comp districtLabel::l:::x, comp idLabel:::::x}, space ::38:x}}"
+			"$verticalGroup": "par l {seq l {space :p:21:p, comp idLabel:::p::p, space s:::p, comp districtLabel:::p::p, space u:::p, comp districtComboBox:::p::p, space u:::p, comp viewButton:::p::p, space ::59:x}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "idLabel"
+				"text": "text"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "districtLabel"
+				"text": "Please choose the district you want to view: "
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "districtComboBox"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "districtComboBoxActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "viewButton"
+				"text": "view this district"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "viewButtonActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 345, 245 )
+		} )
+	}
+}

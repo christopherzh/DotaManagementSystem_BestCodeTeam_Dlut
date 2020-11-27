@@ -1,0 +1,50 @@
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:135:p, par l:::p {seq {comp identityLabel:::p::p, space s:::p, comp identifyComboBox::::116:x}, seq {par l {seq t {comp idLabel:::p::p, space :p:32:p}, seq l {comp passwordLabel:::p::p, space :p:28:p}}, par l:::p {comp idTextField::::216:x, comp passwordField::::216:x}}, comp loginButton::l:::x}, space ::167:x}, seq t {space ::108:x, comp titleLabel:::p:410:p, space :p:85:p}}"
+			"$verticalGroup": "par l {seq l {space :p:60:p, comp titleLabel:::p:50:p, space s:::p, par b {comp identityLabel::b:p::p, comp identifyComboBox::b:p::p}, space :p:20:p, par b {comp idLabel::b:p::p, comp idTextField::b:p::p}, space :p:33:p, par b {comp passwordLabel::b:p::p, comp passwordField::b:p::p}, space :p:42:p, comp loginButton:::p::p, space ::51:x}}"
+		} ) {
+			name: "this"
+			"title": "Dota Account Management System"
+			"resizable": false
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "titleLabel"
+				"text": "Dota Account Management System"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 12, false )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "idLabel"
+				"text": "playerID:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "idTextField"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "passwordLabel"
+				"text": "password"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "loginButton"
+				"text": "login"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "loginButtonActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "identityLabel"
+				"text": "Please choose your identity:"
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "identifyComboBox"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "identifyComboBoxActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "passwordField"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 20 )
+			"size": new java.awt.Dimension( 605, 405 )
+		} )
+	}
+}

@@ -1,0 +1,242 @@
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space :p:53:p, comp panel1:::p::p, space :p:52:p, par l {comp accountNicknameLabel:::p:317:p, seq {comp districtLabel:::p::p, space :p:82:p, comp levelLabel:::p::p}}, space ::141:x}, seq l {space :p:18:p, par l {seq {par l:::p {comp view_list::t::617:x, comp view_list2::l::617:x}, space ::28:x}, seq {par l {comp scrollPane1:::p:617:p, comp game_list:::p:617:p, comp recent_games:::p::p, comp common_heros::l:p::p}, space :0:28:x}}}}"
+			"$verticalGroup": "par l {seq {par l {seq {space :::p, comp panel1:::p::p}, seq l {space :p:16:p, comp accountNicknameLabel:::p:39:p, space s:::p, par b {comp districtLabel::b:p::p, comp levelLabel::b:p::p}}}, space :::p, comp view_list:::p:47:p, space :::p, comp view_list2:::p:47:p, space :::p, comp recent_games:::p::p, space :::p, comp game_list:::p:83:p, space :::p, comp common_heros:::p::p, space :::p, comp scrollPane1:::p:64:p, space :p:59:p}}"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "view_list"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "view_list_table"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "total games" )
+						add( "KDA" )
+						add( "win rate" )
+						add( "tier" )
+						add( "rank" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "recent_games"
+				"text": "temporary matches"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "game_list"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "game_list_views"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( "" )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "heroes" )
+						add( "result" )
+						add( "game_time" )
+						add( "hero_point" )
+						add( "K/D/A" )
+						add( "rank" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "common_heros"
+				"text": "proficient heros"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "table1"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( "" )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "hero" )
+						add( "win_rates" )
+						add( "total_games" )
+						add( "K/D/A" )
+						add( "total_hero_points" )
+						add( "hero_rank" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "view_list2"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "view_list_table2"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "victories" )
+						add( "defeats" )
+						add( "escape rate" )
+						add( "MVP" )
+						add( "rampage" )
+						add( "compliment" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq t {space ::54:x, comp imgLabel:::p::p, space :p:23:p}}"
+				"$verticalGroup": "par l {seq t {space ::50:x, comp imgLabel:::p::p, space :p:32:p}}"
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "imgLabel"
+					"text": "text"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "accountNicknameLabel"
+				"text": "accountNickname"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 24, false )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "districtLabel"
+				"text": "district"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "levelLabel"
+				"text": "level"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 15, 10 )
+			"size": new java.awt.Dimension( 665, 510 )
+		} )
+	}
+}

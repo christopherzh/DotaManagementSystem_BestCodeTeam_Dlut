@@ -1,0 +1,44 @@
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:241:p, comp imgPanel:::p::p}, seq l {space :p:74:p, par l:::p {seq {comp button1:::p:187:p, space :::x, comp button2:::p:195:p}, seq {comp chooseAccountLabel:::p::p, space s:::p, comp chooseAccountComboBox:::p:182:p}}}}, space ::87:x}}"
+			"$verticalGroup": "par l {seq l {space :p:46:p, comp imgPanel:::p::p, space s:::p, par b {comp chooseAccountLabel::b:p::p, comp chooseAccountComboBox::b:p::p}, space :p:38:p, par b {comp button1::b:p::p, comp button2::b:p::p}, space ::96:x}}"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :p:38:p, comp imgLabel:::p::p, space ::39:x}}"
+				"$verticalGroup": "par l {seq t {space ::43:x, comp imgLabel:::p::p, space :p:39:p}}"
+			} ) {
+				name: "imgPanel"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "imgLabel"
+					"text": "img"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "chooseAccountLabel"
+				"text": "please choose your district and nickname:"
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "chooseAccountComboBox"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "chooseAccountComboBoxActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "select this account"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "exit"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 610, 385 )
+		} )
+	}
+}

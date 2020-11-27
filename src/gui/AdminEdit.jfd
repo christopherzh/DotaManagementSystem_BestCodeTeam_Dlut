@@ -1,0 +1,48 @@
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space ::21:x, par l {par l:t {comp playerIdLabel:::p::p, comp accountIdLabel:::p::p, comp serverLabel::l:p::p}, comp button1::t:p::p}, space s:::p, par t {par l:::p {comp accountIdTextField::::101:x, comp playerIdTextField::::101:x, comp serverTextField::::101:x}, comp confirmButton:::p::p}, space :p:84:p}}"
+			"$verticalGroup": "par l {seq l {space :p:20:p, par b {comp accountIdTextField::b:p::p, comp accountIdLabel::b:p::p}, space :::p, par b {comp playerIdTextField::b:p::p, comp playerIdLabel::b:p::p}, space :::p, par b {comp serverTextField::b:p::p, comp serverLabel::b:p::p}, space s:::p, par b {comp confirmButton::b:p::p, comp button1::b:p::p}, space ::44:x}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "accountIdTextField"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "accountIdLabel"
+				"text": "accountId:"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "playerIdLabel"
+				"text": "playerId:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "playerIdTextField"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "serverLabel"
+				"text": "server:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "serverTextField"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "help"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "confirmButton"
+				"text": "confirm edit"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "confirmButtonActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 15, 5 )
+			"size": new java.awt.Dimension( 290, 220 )
+		} )
+	}
+}
+

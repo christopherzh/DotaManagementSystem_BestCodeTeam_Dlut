@@ -1,0 +1,142 @@
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space :p:83:p, par t {seq t {par l {comp endTimeLabel:::p::p, comp startTimeLabel::l:p::p, comp heroPointLabel:::p::p, comp killLabel:::p::p, comp deathLabel:::p::p, comp assistLabel:::p::p, comp rankLabel:::p::p, comp tripleKillLabel:::p::p}, par l {seq {space :::x, par l {par l:t::p {comp tripleKillTextField::::107:x, comp rankTextField::::107:x, comp assistTextField::::107:x, comp deathTextField::::107:x, comp killTextField::::107:x, comp heroPointTextField::::107:x}, comp endTimeTextField::t:p:107:p}}, seq l {space :p:71:p, comp startTimeTextField:::p:107:p, space :0:0:x}}}, seq t {par l {comp quadraKillLabel::l:p::p, comp rampageLabel::l:p::p, comp complimentLabel::l:p::p, comp mvpLabel::l:p::p}, space :::x, par l:::p {comp mvpComboBox::::107:x, comp complimentTextField::::107:x, comp rampageTextField::::107:x, comp quadraKillTextField::::107:x}}, seq t {par l {comp label1::l:p::p, comp resultLabel::l:p::p, comp escapeLabel::l:p::p}, space :97::x, par l:::p {comp heroTextField::::107:x, comp resultComboBox::t::107:x, comp escapeComboBox::l::107:x}}, comp insertButton::t:::x}, space :p:78:p}}"
+			"$verticalGroup": "par l {seq l {space :p:8:p, comp insertButton:::p::p, space :::p, par b {comp label1::b:p::p, comp heroTextField::b:p::p}, space :::p, par l {seq {comp startTimeTextField:::p::p, space :::p, comp endTimeTextField:::p::p, space :::p, comp heroPointTextField:::p::p, space :::p, comp killTextField:::p::p, space :::p, comp deathTextField:::p::p, space :::p, comp assistTextField:::p::p, space :::p, comp rankTextField:::p::p, space :::p, comp tripleKillTextField:::p::p}, seq {comp startTimeLabel:::p::p, space u:::p, comp endTimeLabel:::p::p, space u:::p, comp heroPointLabel:::p::p, space :::p, comp killLabel:::p::p, space :::p, comp deathLabel:::p::p, space u:::p, comp assistLabel:::p::p, space u:::p, comp rankLabel:::p::p, space u:::p, comp tripleKillLabel:::p::p}}, space :::p, par l {comp quadraKillLabel:::p::p, comp quadraKillTextField:::p::p}, space :::p, par l {comp rampageLabel:::p::p, comp rampageTextField:::p::p}, space :::p, par l {comp complimentLabel:::p::p, comp complimentTextField:::p::p}, par l {seq {space :::x, comp mvpLabel:::p::p, space :::p}, seq l {space :::p, comp mvpComboBox:::p::p, space :::x}}, par l {comp resultLabel:::p::p, comp resultComboBox:::p::p}, space :::p, par l {comp escapeLabel:::p::p, comp escapeComboBox::l:p::p}, space :p:9:p}}"
+		} ) {
+			name: "this"
+			"resizable": false
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "hero"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "heroTextField"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "resultLabel"
+				"text": "result"
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "resultComboBox"
+				"model": new javax.swing.DefaultComboBoxModel {
+					selectedItem: "win"
+					addElement( "win" )
+					addElement( "lose" )
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "startTimeLabel"
+				"text": "start time"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "startTimeTextField"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "endTimeLabel"
+				"text": "end time"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "endTimeTextField"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "heroPointTextField"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "killTextField"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "deathTextField"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "assistTextField"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "rankTextField"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "tripleKillTextField"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "heroPointLabel"
+				"text": "hero point"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "killLabel"
+				"text": "kill"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "deathLabel"
+				"text": "death"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "assistLabel"
+				"text": "assist"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "rankLabel"
+				"text": "rank"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "tripleKillLabel"
+				"text": "triple kill"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "quadraKillLabel"
+				"text": "quadra kill"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "quadraKillTextField"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "rampageLabel"
+				"text": "rampage"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "rampageTextField"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "complimentLabel"
+				"text": "compliment"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "complimentTextField"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "mvpLabel"
+				"text": "mvp"
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "mvpComboBox"
+				"model": new javax.swing.DefaultComboBoxModel {
+					selectedItem: "yes"
+					addElement( "yes" )
+					addElement( "no" )
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "escapeLabel"
+				"text": "escape"
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "escapeComboBox"
+				"model": new javax.swing.DefaultComboBoxModel {
+					selectedItem: "no"
+					addElement( "no" )
+					addElement( "yes" )
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "insertButton"
+				"text": "insert"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "insertButtonActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 30, 45 )
+			"size": new java.awt.Dimension( 400, 505 )
+		} )
+	}
+}
